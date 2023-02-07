@@ -2,80 +2,19 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/css/list.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-  <title>List</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/list.css">
+    <title>Document</title>
 </head>
 
 <body>
-  <div class="background">
-    <div class="container">
-      <div class="modal_container">
-        <div class="modal_container__menu_container">
-          <div class="rolex_container"><a href="/list/:rolex">ROLEX</a></div>
-          <div class="iwc_container"><a href="/list/:iwc">IWC</a></div>
-          <div class="omega_container"><a href="/list/:omega">OMEGA</a></div>
-          <div class="patech_container"><a href="/list/:patech">PATHECH PHILLIP</a></div>
+    <div class="background">
+        <div class="container">
+            
         </div>
-      </div>
-      <div class="nav_container">
-        <div class="nav_container__left" onclick="clickNav()">
-          <div class="nav_container__left_menu"></div>
-          <div class="nav_container__left_menu"></div>
-          <div class="nav_container__left_menu"></div>
-        </div>
-        <div class="nav_container__mid"></div>
-        <div class="nav_container__right" >
-          <a href="/login">로그인</a>
-        </div>
-      </div>
-      <div class="list_contianer">
-        
-      </div>
     </div>
-  </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-<script>
-
-  let menuStatus = false
-
-  const swiper = new Swiper(".swiper", {
-    // Optional parameters
-    direction: "horizontal",
-    loop: true,
-
-    // If we need pagination
-    pagination: {
-      el: ".swiper-pagination",
-    },
-
-    // Navigation arrows
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-
-    // And if we need scrollbar
-    scrollbar: {
-      el: ".swiper-scrollbar",
-    },
-  });
-
-  function clickNav() {
-    const modalContainer = document.querySelector('.modal_container');
-    if(menuStatus == false) {
-      modalContainer.style.top = '7vh'
-      menuStatus = true
-    } else {
-      modalContainer.style.top = '-2600px'
-      menuStatus = false;
-    }
-  }
-
-</script>
 
 </html>
