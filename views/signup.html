@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/signup.css">
+    <title>SignUp</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="signup_container">
+            <div class="input_container"><input class="input_id" type="text" placeholder="아이디(6자리 이상 15자리 이하)" maxlength="15" minlength="6"></div>
+            <div class="input_container"><input class="input_pw" type="password" placeholder="비밀번호" maxlength="15" minlength="6">
+            </div>
+            <div class="input_container"><input class="input_pwCheck" type="password" placeholder="비밀번호" maxlength="15" minlength="6">
+            </div>
+            <div class="input_container"><input class="input_phone" type="number" placeholder="휴대폰 번호( - 없이)"
+                    maxlength="11"></div>
+            <div class="phone_detail">상담 받으실 휴대폰 번호를 정확하게 입력해주세요.</div>
+            <div class="input_container"><button onclick="login()">회원가입</button></div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+    crossorigin="anonymous"></script>
+<script>
+    const userId = $('.input_id');
+    const userPw = $('.input_pw');
+    const userPwCheck = $('.input_pwCheck');
+    const userPhone = $('.input_phone');
+
+
+    function login() {
+        const id = userId.val()
+        const password = userPw.val();
+        const passwordCheck = userPwCheck.val();
+        const phoneNumber = userPhone.val();
+
+        if (password != passwordCheck) {
+            alert('비밀번호를 다시 한번 확인해 주세요.');
+            return;
+        } else if (password.length > 15) {
+            alert('비밀번호는 15자리 미만입니다.')
+            return;
+        };
+
+        if (id == '') {
+            alert('Id를 제대로 입력해 주세요');
+            return;
+        }
+
+        if (phoneNumber == '') {
+            alert('휴대폰 번호를 제대로 입력해 주세요');
+            return;
+        } else if (phoneNumber.length != 11) {
+            alert('휴대폰 번호를 제대로 입력해 주세요');
+            return;
+        }
+        $.ajax({
+            type: 'POST',
+            url: '/signUp',
+            data: {
+                id_give: id,
+                pw_give: password,
+                pn_give : phoneNumber,
+            },
+            success: function (res) {
+                if (res['result'] == 'success') {
+                    alert('환영합니다.')
+                    window.location.href = '/'
+                } else {
+                    alert('회원가입에 실패하였습니다.')
+                }
+            }
+        })
+    }
+</script>
+
+</html>

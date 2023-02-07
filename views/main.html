@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="background">
+    <div class="container">
+      <div class="modal_container">
+        <div class="modal_container__menu_container">
+          <div class="rolex_container">ROLEX</div>
+          <div class="iwc_container">IWC</div>
+          <div class="omega_container">OMEGA</div>
+          <div class="patech_container">PATHECH PHILLIP</div>
+        </div>
+      </div>
+      <div class="nav_container">
+        <div class="nav_container__left" onclick="clickNav()">
+          <div class="nav_container__left_menu"></div>
+          <div class="nav_container__left_menu"></div>
+          <div class="nav_container__left_menu"></div>
+        </div>
+        <div class="nav_container__mid"></div>
+        <div class="nav_container__right" >
+          <a href="/login">로그인</a>
+        </div>
+      </div>
+      <div class="main_container"></div>
+      <div class="slide_container">
+        <div class="swiper">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+              <div class="swiper-slide_box-one">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="swiper-slide_box-two"></div>
+            </div>
+            <div class="swiper-slide">
+              <div class="swiper-slide_box-three"></div>
+            </div>
+          </div>
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
+
+          <!-- If we need navigation buttons -->
+          <!-- <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div> -->
+
+          <!-- If we need scrollbar -->
+          <!-- <div class="swiper-scrollbar"></div> -->
+        </div>
+      </div>
+      <div class="logo_container"></div>
+      <div class="detail_container"></div>
+    </div>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script>
+
+  let menuStatus = false
+
+  const swiper = new Swiper(".swiper", {
+    // Optional parameters
+    direction: "horizontal",
+    loop: true,
+
+    // If we need pagination
+    pagination: {
+      el: ".swiper-pagination",
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+
+    // And if we need scrollbar
+    scrollbar: {
+      el: ".swiper-scrollbar",
+    },
+  });
+
+  function clickNav() {
+    const modalContainer = document.querySelector('.modal_container');
+    if(menuStatus == false) {
+      modalContainer.style.top = '7vh'
+      menuStatus = true
+    } else {
+      modalContainer.style.top = '-2600px'
+      menuStatus = false;
+    }
+  }
+
+</script>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/login.css">
+    <title>Login</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"
+        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous">
+        </script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="login_container">
+            <div class="input_container"><input class="input_id" type="text" placeholder="아이디"></div>
+            <div class="input_container"><input class="input_pw" type="password" placeholder="비밀번호"></div>
+            <div class="input_container"><button onclick="login()">Login</button></div>
+            <div class="signup_container" onclick="signUp()">회원가입</div>
+        </div>
+    </div>
+</body>
+<script>
+    function login() {
+        const userId = $('.input_id').val();
+        const password = $('.input_pw').val();
+
+        if (userId == '' || password == '') {
+            alert('아이디 또는 비밀번호를 제대로 입력해주세요.');
+            return;
+        };
+        
+        $.ajax({
+            type: 'POST',
+            url: '/login',
+            data: {
+                id_give: userId,
+                pw_give: password,
+            },
+            success: function (res) {
+                if (res['result'] == 'success') {
+                    alert('환영합니다.');
+                    window.location.href = '/';
+                } else {
+                    alert('로그인에 실패하였습니다.');
+                }
+            }
+        })
+    }
+
+    function signUp() {
+        window.location.href = '/signup'
+    }
+</script>
+
+</html>
